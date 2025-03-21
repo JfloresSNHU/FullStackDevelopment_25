@@ -1,0 +1,18 @@
+[
+    {
+      "name": "Gale Reef",
+      "image": "/images/reef1.jpg",
+      "description": "Explore the vibrant marine life at Gale Reef with our guided tours."
+    },
+    {
+      "name": "Dawson’s Reef",
+      "image": "/images/reef2.jpg",
+      "description": "Dive into the deep with Dawson’s Reef adventures and crystal clear waters."
+    },
+    {
+      "name": "Claire’s Reef",
+      "image": "/images/reef3.jpg",
+      "description": "Experience tranquility and natural beauty at Claire’s Reef, perfect for all travelers."
+    }
+]
+  
