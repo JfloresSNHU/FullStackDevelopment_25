@@ -6,5 +6,7 @@ var travelController = require('../controllers/travel');
 /* Route for Home Page */
 router.get('/', mainController.index);
 router.get('/travel', travelController.travel);
+router.get('/travel/:tripCode', travelController.tripDetail);
+
 
 module.exports = router;

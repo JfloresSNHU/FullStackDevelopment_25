@@ -8,8 +8,8 @@
         <ul id="sites">
           {{#each trips}}
             <li>
-              <img src="{{image}}" alt="{{name}}">
-              <h2>{{name}}</h2>
+              <img src="/images/{{image}}" alt="{{name}}" class="img-responsive">
+              <h2><a href="/travel/{{code}}">{{name}}</a></h2>
               <p>{{description}}</p>
             </li>
           {{/each}}
