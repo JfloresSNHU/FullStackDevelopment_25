@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TripCardComponent } from '../trip-card/trip-card.component';
+import { AuthenticationService } from '../services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { TripDataService } from '../trip-data.service';
 import { Trip } from '../models/trip';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -15,7 +17,12 @@ import { Router } from '@angular/router';
 export class TripListingComponent implements OnInit {
   trips: Trip[] = [];
 
-  constructor(private tripService: TripDataService, private router: Router) {}
+  constructor(private tripService: TripDataService, private router: Router, public authService: AuthenticationService) {}
+
+  
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 
 addTrip(): void {
   this.router.navigate(['/add-trip']);

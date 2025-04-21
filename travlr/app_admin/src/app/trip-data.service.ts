@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Trip } from './models/trip'; // Adjust path if needed
+import { Observable, firstValueFrom } from 'rxjs';
+import { Trip } from './models/trip';
+import { User } from './models/user';
+import { AuthResponse } from './models/authresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +25,25 @@ export class TripDataService {
     return this.http.post<Trip>(`${this.apiBase}/trips`, trip);
   }
 
-  updateTrip(trip: Trip): Observable<any> {
-    return this.http.put(`${this.apiBase}/trips/${trip.code}`, trip);
+  updateTrip(trip: Trip): Observable<Trip> {
+    return this.http.put<Trip>(`${this.apiBase}/trips/${trip.code}`, trip);
   }
 
   deleteTrip(code: string): Observable<any> {
     return this.http.delete(`${this.apiBase}/trips/${code}`);
   }
+
+  public login(user: User): Promise<AuthResponse> {
+    return this.makeAuthApiCall('login', user);
+  }
   
+  public register(user: User): Promise<AuthResponse> {
+    return this.makeAuthApiCall('register', user);
+  }
+
+  private makeAuthApiCall(urlPath: string, user: User): Promise<AuthResponse> {
+    const url = `${this.apiBase}/${urlPath}`;
+    return firstValueFrom(this.http.post<AuthResponse>(url, user));
+  }
 }
+

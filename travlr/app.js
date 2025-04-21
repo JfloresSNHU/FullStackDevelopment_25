@@ -1,5 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
+require('./app_api/models/user');
+require('./app_api/config/passport');
 const cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -8,6 +10,10 @@ var logger = require('morgan');
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 require('./app_api/models/db');
+require('dotenv').config();
+const passport = require('passport');
+
+
 var app = express();
 
 // view engine setup
@@ -30,6 +36,7 @@ app.use(cors());
 app.use('/api', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', apiRouter);
+app.use(passport.initialize());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
