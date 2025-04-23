@@ -1,0 +1,11 @@
+<div class="container mt-4">
+    <h2>Add a New Trip</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3" *ngFor="let field of ['code', 'name', 'resort', 'length', 'perPerson', 'image', 'description']">
+        <label class="form-label">{{ field | titlecase }}</label>
+        <input class="form-control" [type]="field === 'perPerson' ? 'number' : 'text'" [formControlName]="field">
+      </div>
+      <button class="btn btn-success" type="submit">Save</button>
+    </form>
+  </div>
+  

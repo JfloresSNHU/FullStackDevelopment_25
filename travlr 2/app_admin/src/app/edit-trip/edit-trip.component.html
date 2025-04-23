@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Edit Trip</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Trip Code</label>
+        <input class="form-control" formControlName="code" [disabled]="true">
+      </div>
+  
+      <div class="mb-3" *ngFor="let field of ['name', 'resort', 'length', 'perPerson', 'image', 'description']">
+        <label class="form-label">{{ field | titlecase }}</label>
+        <input [type]="field === 'perPerson' ? 'number' : 'text'" class="form-control" [formControlName]="field">
+        <div *ngIf="submitted && f[field].errors" class="text-danger">
+          <small *ngIf="f[field].errors?.['required']">{{ field | titlecase }} is required</small>
+        </div>
+      </div>
+  
+      <button class="btn btn-primary" type="submit">Update Trip</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/']">Cancel</a>
+    </form>
+  
+    <div *ngIf="message" class="alert alert-info mt-3">
+      {{ message }}
+    </div>
+  </div>
+  

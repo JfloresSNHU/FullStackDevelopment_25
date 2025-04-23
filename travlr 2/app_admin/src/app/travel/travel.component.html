@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2>Browse Trips by Price</h2>
+  
+    <ul class="nav nav-tabs mb-3">
+      <li class="nav-item" (click)="selectFilter('low')">
+        <a class="nav-link" [class.active]="selectedFilter === 'low'">$500 - $1000</a>
+      </li>
+      <li class="nav-item" (click)="selectFilter('mid')">
+        <a class="nav-link" [class.active]="selectedFilter === 'mid'">$1000 - $2000</a>
+      </li>
+      <li class="nav-item" (click)="selectFilter('high')">
+        <a class="nav-link" [class.active]="selectedFilter === 'high'">$2000+</a>
+      </li>
+    </ul>
+  
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let trip of filteredTrips">
+        <div class="card h-100">
+          <img [src]="'/assets/images/' + trip.image" class="card-img-top" [alt]="trip.name">
+          <div class="card-body">
+            <h5 class="card-title">{{ trip.name }}</h5>
+            <p class="card-text"><strong>{{ trip.resort }}</strong></p>
+            <p>{{ trip.length }} nights - ${{ trip.perPerson | number:'1.2-2' }}</p>
+            <p>{{ trip.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

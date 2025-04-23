@@ -1,0 +1,50 @@
+{{> header }}
+
+<div class="container">
+  <div id="contents">
+    <div id="adbox">
+      <img src="/images/sea-sound.jpg" alt="Summer Banner">
+      <h1>ENJOY THE SUMMER WITH US!</h1>
+      <p>
+        This website template has been designed by 
+        <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a> 
+        for you, for free.
+      </p>
+    </div>
+
+    <div id="main">
+      <div class="box">
+        <div>
+          <div>
+            <h3>FEATURED TRIPS</h3>
+            {{#each trips}}
+              <div class="trip-block">
+                <img src="/images/{{this.image}}" alt="{{this.name}}" class="trip-thumb">
+                <h4>{{this.name}}</h4>
+                <p><strong>{{this.resort}}</strong></p>
+                <p>{{this.description}}</p>
+                <p><strong>{{this.length}} nights - ${{this.perPerson}}</strong></p>
+                <hr>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="testimonials" class="box">
+      <div>
+        <div>
+          <h3>Testimonials</h3>
+          <p>
+            “In hac habitasse platea dictumst. Integer purus justo, egestas eu consectetur eu, 
+            cursus in tortor. Quisque nec nunc ac mi ultrices iaculis.”
+            <span>- <a href="/">Juan De La Cruz</a></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer }}
